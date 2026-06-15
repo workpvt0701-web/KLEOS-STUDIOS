@@ -323,6 +323,13 @@
   }
 
   /* ---------- RUN EVERYTHING ON LOAD ---------------------------------- */
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      document.body.classList.add('loaded');
+      const pre = document.getElementById('preloader');
+      if (pre) pre.classList.add('done');
+    }
+  });
   window.addEventListener('DOMContentLoaded', function () {
     runPreloader();
     setupHeroVideos();    // start the background video crossfade
