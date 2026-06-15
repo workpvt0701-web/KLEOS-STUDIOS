@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lost in the dark — Kleos</title>
+  <meta name="description" content="This page doesn't exist. Return to Kleos." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* center everything for the 404 */
+    #notfound {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: center;
+    }
+    .nf-title { font-family: var(--font-title); font-weight: 600;
+      font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; }
+    .nf-sub { font-family: var(--font-util); font-size: 0.9rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+      margin: 1.5rem 0 2.5rem; }
+  </style>
+</head>
+<body>
+  <div id="preloader">
+    <div class="preloader-word" id="preloader-word"></div>
+    <div class="preloader-line"></div>
+  </div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <section id="notfound">
+    <div class="container">
+      <h1 class="nf-title">Lost in the dark.</h1>
+      <p class="nf-sub">This page doesn't exist.</p>
+      <a href="index.html" class="btn clickable">Return to Kleos</a>
+    </div>
+  </section>
+
+  <script src="cursor.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>

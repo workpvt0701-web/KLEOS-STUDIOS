@@ -1,0 +1,42 @@
+<!-- KLEOS section: contact.html. Edit here, then paste into index.html. -->
+<section id="contact">
+    <div class="container">
+      <p class="eyebrow reveal">Contact</p>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-headline reveal">Ready to build something that outlives the moment?</p>
+          <div class="contact-options reveal">
+            <a href="https://instagram.com/kleos.creates" target="_blank" rel="noopener" class="btn">DM on Instagram</a>
+            <!-- UPDATE: add your WhatsApp number (e.g. https://wa.me/91XXXXXXXXXX) -->
+            <a href="#" class="btn" id="whatsapp-link">WhatsApp</a>
+          </div>
+        </div>
+        <div>
+          <!-- The form posts to a backend OR a free service like Formspree.
+               See animations.js + the deployment guide for wiring it up. -->
+          <form class="contact-form" id="contact-form" novalidate>
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+              <div class="field-error" data-for="name">Please enter your name.</div>
+            </div>
+            <div>
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required />
+              <div class="field-error" data-for="subject">Please enter a subject.</div>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+              <div class="field-error" data-for="message">Please enter a message.</div>
+            </div>
+            <button type="submit" class="btn submit-btn clickable" id="submit-btn">
+              <span class="btn-text">Send message</span>
+              <span class="spinner"></span>
+            </button>
+            <p class="form-status" id="form-status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

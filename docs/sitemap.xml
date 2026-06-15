@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Kleos sitemap. UPDATE every "YOUR-SITE-URL.com" with your real domain. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://YOUR-SITE-URL.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://YOUR-SITE-URL.com/case-studies/bankai.html</loc><priority>0.8</priority></url>
+  <url><loc>https://YOUR-SITE-URL.com/case-studies/aizen.html</loc><priority>0.8</priority></url>
+  <url><loc>https://YOUR-SITE-URL.com/case-studies/penelope.html</loc><priority>0.8</priority></url>
+  <url><loc>https://YOUR-SITE-URL.com/case-studies/kleos-brand.html</loc><priority>0.8</priority></url>
+  <url><loc>https://YOUR-SITE-URL.com/case-studies/chainsaw-man.html</loc><priority>0.8</priority></url>
+  <url><loc>https://YOUR-SITE-URL.com/case-studies/apple-concept.html</loc><priority>0.8</priority></url>
+</urlset>

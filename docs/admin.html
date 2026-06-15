@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kleos — Admin</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Admin-only styles */
+    body { cursor: auto; }
+    .admin-wrap { max-width: 1000px; margin: 0 auto; padding: 3rem 5%; }
+    .admin-logo { font-family: var(--font-display); font-size: 1.6rem;
+      letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+    .admin-sub { font-family: var(--font-util); font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 3rem; }
+
+    /* login gate */
+    #gate { max-width: 360px; margin: 15vh auto; text-align: left; }
+    #gate input { width: 100%; background: var(--panel);
+      border: 1px solid var(--gold-soft); color: var(--text);
+      font-family: var(--font-util); padding: 0.9rem 1rem; margin: 1rem 0; }
+    #gate input:focus { outline: none; border-color: var(--gold); }
+    .gate-error { color: var(--error); font-size: 0.8rem; min-height: 1.2em; }
+
+    /* dashboard */
+    #dash { display: none; }
+    .admin-tabs { display: flex; gap: 1.5rem; border-bottom: 1px solid var(--gold-soft);
+      margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .admin-tab { background: none; border: none; color: var(--text);
+      font-family: var(--font-util); font-size: 0.8rem; letter-spacing: 0.15em;
+      text-transform: uppercase; opacity: 0.5; padding-bottom: 0.8rem;
+      border-bottom: 2px solid transparent; }
+    .admin-tab.active { opacity: 1; color: var(--gold); border-bottom-color: var(--gold); }
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-bottom: 1rem; align-items: center; }
+    .field-row label { font-family: var(--font-util); font-size: 0.75rem;
+      letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+    .field-row input { background: var(--panel); border: 1px solid var(--gold-soft);
+      color: var(--text); font-family: var(--font-util); padding: 0.7rem 0.9rem; }
+    .field-row input:focus { outline: none; border-color: var(--gold); }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 0.9rem 0.5rem;
+      border-bottom: 1px solid var(--gold-soft); font-family: var(--font-util);
+      font-size: 0.85rem; }
+    th { color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 0.7rem; }
+    .hint { font-family: var(--font-util); font-size: 0.8rem; opacity: 0.6;
+      line-height: 1.6; margin-top: 1.5rem; }
+    .save-note { color: #4CAF7D; font-size: 0.8rem; margin-top: 1rem; min-height: 1.2em; }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <div class="admin-logo">KLEOS</div>
+    <div class="admin-sub">Admin</div>
+
+    <!-- ===== LOGIN GATE =====
+         NOTE: this is a light client-side gate so casual visitors can't
+         poke around. It is NOT real security — anyone technical can see
+         the page source. For true protection, the backend should check
+         ADMIN_PASSWORD. Don't put anything truly sensitive here. -->
+    <div id="gate">
+      <p style="font-family:var(--font-title); font-size:1.4rem; margin-bottom:0.5rem;">Enter to continue.</p>
+      <input type="password" id="gate-pass" placeholder="Password" />
+      <button class="btn" id="gate-btn">Enter</button>
+      <p class="gate-error" id="gate-error"></p>
+    </div>
+
+    <!-- ===== DASHBOARD ===== -->
+    <div id="dash">
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-panel="stats">Stats</button>
+        <button class="admin-tab" data-panel="portfolio">Portfolio</button>
+        <button class="admin-tab" data-panel="submissions">Submissions</button>
+        <button class="admin-tab" data-panel="analytics">Analytics</button>
+      </div>
+
+      <!-- STATS -->
+      <div class="panel active" id="panel-stats">
+        <h2 style="font-family:var(--font-title); margin-bottom:1.5rem;">Update stats</h2>
+        <div class="field-row"><label>Views</label><input id="s-views" value="38098" /></div>
+        <div class="field-row"><label>Accounts reached</label><input id="s-reached" value="30039" /></div>
+        <div class="field-row"><label>Interactions</label><input id="s-interactions" value="8999" /></div>
+        <div class="field-row"><label>Followers</label><input id="s-followers" value="59" /></div>
+        <button class="btn" id="save-stats">Save stats</button>
+        <p class="save-note" id="stats-note"></p>
+        <p class="hint">These update the numbers shown in the About section. With the backend connected, Save writes them to the database. Without it, copy the values into index.html (the data-count attributes).</p>
+      </div>
+
+      <!-- PORTFOLIO -->
+      <div class="panel" id="panel-portfolio">
+        <h2 style="font-family:var(--font-title); margin-bottom:1.5rem;">Portfolio pieces</h2>
+        <table>
+          <thead><tr><th>Name</th><th>Category</th><th>Views</th></tr></thead>
+          <tbody>
+            <tr><td>BANKAI</td><td>Video</td><td>38.8K</td></tr>
+            <tr><td>Sōsuke Aizen</td><td>Design</td><td>2.1K</td></tr>
+            <tr><td>Penelope</td><td>Design</td><td>450</td></tr>
+            <tr><td>Kleos Brand Reveal</td><td>Design</td><td>427</td></tr>
+            <tr><td>Chainsaw Man</td><td>Design</td><td>246</td></tr>
+            <tr><td>Apple × Kleos</td><td>Design</td><td>203</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">To add or edit a piece: duplicate a card in index.html (the .work-card block) and create a matching page in case-studies/. This table mirrors what's live.</p>
+      </div>
+
+      <!-- SUBMISSIONS -->
+      <div class="panel" id="panel-submissions">
+        <h2 style="font-family:var(--font-title); margin-bottom:1.5rem;">Contact submissions</h2>
+        <table id="subs-table">
+          <thead><tr><th>Time</th><th>Name</th><th>Subject</th><th>Message</th></tr></thead>
+          <tbody><tr><td colspan="4" style="opacity:0.6;">No submissions loaded. Connect the backend to see real enquiries here.</td></tr></tbody>
+        </table>
+      </div>
+
+      <!-- ANALYTICS -->
+      <div class="panel" id="panel-analytics">
+        <h2 style="font-family:var(--font-title); margin-bottom:1.5rem;">Views per project</h2>
+        <table id="analytics-table">
+          <thead><tr><th>Project</th><th>Views</th></tr></thead>
+          <tbody><tr><td colspan="2" style="opacity:0.6;">No analytics loaded. Connect the backend to track which case study gets the most views.</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ---- CONFIG: set this to your Render backend URL once deployed ----
+       Leave as '' to run the panel in offline/demo mode. */
+    const API_BASE = ''; // UPDATE: e.g. 'https://kleos-backend.onrender.com'
+
+    /* ---- LOGIN GATE ----
+       UPDATE: change this to your own password. Reminder: client-side
+       only, not real security. */
+    const ADMIN_PASS = 'kleos2026';
+
+    const gate = document.getElementById('gate');
+    const dash = document.getElementById('dash');
+    document.getElementById('gate-btn').addEventListener('click', tryLogin);
+    document.getElementById('gate-pass').addEventListener('keydown', e => {
+      if (e.key === 'Enter') tryLogin();
+    });
+    function tryLogin() {
+      const val = document.getElementById('gate-pass').value;
+      if (val === ADMIN_PASS) {
+        gate.style.display = 'none';
+        dash.style.display = 'block';
+        loadBackendData();
+      } else {
+        document.getElementById('gate-error').textContent = 'Incorrect password.';
+      }
+    }
+
+    /* ---- TAB SWITCHING ---- */
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+      });
+    });
+
+    /* ---- SAVE STATS ---- */
+    document.getElementById('save-stats').addEventListener('click', async () => {
+      const note = document.getElementById('stats-note');
+      const payload = {
+        views: document.getElementById('s-views').value,
+        reached: document.getElementById('s-reached').value,
+        interactions: document.getElementById('s-interactions').value,
+        followers: document.getElementById('s-followers').value
+      };
+      if (!API_BASE) {
+        note.textContent = 'Demo mode — copy these into index.html data-count attributes.';
+        return;
+      }
+      try {
+        await fetch(API_BASE + '/api/stats', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        note.textContent = 'Saved.';
+      } catch { note.textContent = 'Could not reach backend.'; }
+    });
+
+    /* ---- LOAD BACKEND DATA (submissions + analytics) ---- */
+    async function loadBackendData() {
+      if (!API_BASE) return; // stay in demo mode
+      // analytics
+      try {
+        const r = await fetch(API_BASE + '/api/analytics');
+        const data = await r.json();
+        const tb = document.querySelector('#analytics-table tbody');
+        tb.innerHTML = data.map(row =>
+          `<tr><td>${row._id}</td><td>${row.count}</td></tr>`).join('');
+      } catch (e) { /* leave demo row */ }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Kleos — allow all crawlers, point to sitemap
+User-agent: *
+Allow: /
+
+# UPDATE: replace with your live domain after deploy
+Sitemap: https://YOUR-SITE-URL.com/sitemap.xml

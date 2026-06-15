@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============ SEO & META (same on every page) ============ -->
+  <title>Kleos — The glory that outlives you.</title>
+  <meta name="description" content="Dark, cinematic brand storytelling. Design, video, motion graphics. DM for work." />
+  <meta property="og:title" content="Kleos — The glory that outlives you." />
+  <meta property="og:description" content="Dark, cinematic brand storytelling. Design, video, motion graphics. DM for work." />
+  <meta property="og:type" content="website" />
+  <!-- UPDATE: replace with your live site URL after deploy -->
+  <meta property="og:url" content="https://YOUR-SITE-URL.com" />
+  <!-- UPDATE: drop a 1200x630 KLEOS wordmark image at this path -->
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <link rel="icon" href="assets/favicon.ico" />
+
+  <!-- ============ FONTS ============ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- ============ STYLES ============ -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========================================================
+       PRELOADER — black screen, KLEOS animates in letter by letter
+       ======================================================== -->
+  <div id="preloader">
+    <div class="preloader-word" id="preloader-word"><!-- letters injected by JS --></div>
+    <div class="preloader-line"></div>
+  </div>
+
+  <!-- ========================================================
+       PAGE TRANSITION OVERLAY (used when leaving to a case study)
+       ======================================================== -->
+  <div id="page-transition"><div class="flash">KLEOS</div></div>
+
+  <!-- custom cursor pieces (positioned by cursor.js) -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- scroll progress line -->
+  <div id="scroll-progress"></div>
+
+  <!-- ========================================================
+       NAVIGATION
+       ======================================================== -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="nav-logo">
+        <a href="index.html">KLEOS</a><span style="opacity:0.5;font-size:0.7rem;letter-spacing:0.15em;">.creates</span>
+        <!-- AVAILABILITY: green dot = available. To show busy, swap the
+             background to #C0563F in style.css (.status-dot) and change
+             the text below to "Currently unavailable". -->
+        <span class="status">
+          <span class="status-dot"></span>
+          <span class="nav-status-text">Available for work</span>
+        </span>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========================================================
+       1. HERO
+       ======================================================== -->
+  <section id="hero">
+    <!-- Two looping background videos that slowly crossfade between each other.
+         Both are muted + autoplay + loop so they play silently.
+         UPDATE: put hero.mp4 AND hero2.mp4 (the Toji edit) in assets/.
+         hero-poster.jpg is the still shown before they load.
+         If you add neither, the text hero still works on plain black. -->
+    <div id="hero-media">
+      <video class="hero-vid is-active" autoplay muted loop playsinline
+             poster="assets/hero-poster.jpg">
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <video class="hero-vid" autoplay muted loop playsinline>
+        <source src="assets/hero2.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div id="hero-overlay"></div>
+    <div id="hero-glow"></div>
+    <div class="container hero-content">
+      <p class="hero-sub">Cinematic Brand Storytelling</p>
+      <h1 class="hero-title" id="hero-title">The glory that outlives you.</h1>
+      <div class="hero-signature"></div>
+      <!-- UPDATE: handle confirmed as @kleos.creates -->
+      <a href="https://instagram.com/kleos.creates" target="_blank" rel="noopener" class="btn">DM for work</a>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       2. ABOUT
+       ======================================================== -->
+  <section id="about">
+    <div class="container">
+      <p class="eyebrow reveal">About</p>
+      <h2 class="section-title reveal">Built from nothing. Built to last.</h2>
+      <div class="about-grid">
+        <div class="about-story">
+          <p class="reveal">Kleos began with zero skills and a single brand name — a word meaning "glory that outlives you" in both Greek and Sanskrit.</p>
+          <p class="reveal">It is a dark, cinematic creative studio: design, video editing, and motion graphics. Restraint over noise. Atmosphere over flash.</p>
+          <p class="reveal">The numbers came fast. The work is still being built — every single day.</p>
+        </div>
+        <!-- Stat cards count up on scroll. Real figures from Instagram insights. -->
+        <div class="stat-cards reveal">
+          <div class="stat-card">
+            <div class="stat-num" data-count="46198">0</div>
+            <div class="stat-label">Views</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-count="35039">0</div>
+            <div class="stat-label">Accounts reached</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-count="10999">0</div>
+            <div class="stat-label">Interactions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-count="65">0</div>
+            <div class="stat-label">Followers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       3. SOCIAL PROOF — just the numbers. Let them land.
+       ======================================================== -->
+  <section id="social-proof">
+    <div class="container">
+      <p class="eyebrow reveal">Recognition</p>
+      <p class="proof-big reveal">45k+ views. 35k+ accounts reached. 93.5% non-followers.</p>
+      <p class="proof-sub reveal">In the first stretch, From 0 to 59 followers.</p>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. WORK / PORTFOLIO
+       ======================================================== -->
+  <section id="work">
+    <div class="container">
+      <p class="eyebrow reveal">Work</p>
+      <h2 class="section-title reveal">Selected pieces.</h2>
+
+      <div class="filter-tabs reveal">
+        <button class="filter-tab active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="design">Design</button>
+        <button class="filter-tab" data-filter="video">Video</button>
+        <button class="filter-tab" data-filter="motion">Motion</button>
+      </div>
+
+      <div class="work-grid">
+        <!-- Each card links to its case study. Real views from your insights. -->
+        <a class="work-card has-image reveal clickable" data-cat="video" href="case-studies/bankai.html">
+          <img class="work-img" src="assets/images/BANKAI.png" loading="lazy" alt="BANKAI" />
+          <span class="work-ghost">BANKAI</span>
+          <span class="work-tag">Video · Bleach</span>
+          <span class="work-name">BANKAI</span>
+          <span class="work-views">40K+ views</span>
+        </a>
+        <a class="work-card has-image reveal clickable" data-cat="design" href="case-studies/aizen.html">
+          <img class="work-img" src="assets/images/aizen.png" loading="lazy" alt="Sōsuke Aizen" />
+          <span class="work-ghost">AIZEN</span>
+          <span class="work-tag">Design · Bleach</span>
+          <span class="work-name">Sōsuke Aizen</span>
+          <span class="work-views">2.5K+ views</span>
+        </a>
+        <a class="work-card has-image reveal clickable" data-cat="design" href="case-studies/penelope.html">
+          <img class="work-img" src="assets/images/penelope.png" loading="lazy" alt="Penelope" />
+          <span class="work-ghost">PENELOPE</span>
+          <span class="work-tag">Design · The Odyssey</span>
+          <span class="work-name">Penelope</span>
+          <span class="work-views">450 views</span>
+        </a>
+        <a class="work-card has-image reveal clickable" data-cat="design" href="case-studies/kleos-brand.html">
+          <img class="work-img" src="assets/images/kleos-brand.png" loading="lazy" alt="Kleos Brand Reveal" />
+          <span class="work-ghost">KLEOS</span>
+          <span class="work-tag">Design · Identity</span>
+          <span class="work-name">Kleos Brand Reveal</span>
+          <span class="work-views">427 views</span>
+        </a>
+        <a class="work-card has-image reveal clickable" data-cat="design" href="case-studies/chainsaw-man.html">
+          <img class="work-img" src="assets/images/chainsaw-man.png" loading="lazy" alt="Chainsaw Man" />
+          <span class="work-ghost">CHAINSAW</span>
+          <span class="work-tag">Design · Collab</span>
+          <span class="work-name">Chainsaw Man</span>
+          <span class="work-views">246 views · w/ @kakarot._editz</span>
+        </a>
+        <a class="work-card has-image reveal clickable" data-cat="design" href="case-studies/apple-concept.html">
+          <img class="work-img" src="assets/images/apple-concept.png" loading="lazy" alt="Apple × Kleos" />
+          <span class="work-ghost">APPLE</span>
+          <span class="work-tag">Design · Concept</span>
+          <span class="work-name">Apple × Kleos</span>
+          <span class="work-views">203 views · Concept</span>
+        </a>
+        <a class="work-card has-image reveal clickable" data-cat="video" href="case-studies/toji.html">
+          <img class="work-img" src="assets/images/toji.png" loading="lazy" alt="Toji" />
+          <span class="work-ghost">TOJI</span>
+          <span class="work-tag">Video · Jujutsu Kaisen</span>
+          <span class="work-name">Toji</span>
+          <span class="work-views">283 views</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. SERVICES & PRICING
+       ======================================================== -->
+  <section id="services">
+    <div class="container">
+      <p class="eyebrow reveal">Services</p>
+      <h2 class="section-title reveal">What Kleos builds.</h2>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <div class="service-name">Design &amp; Posters</div>
+          <div class="service-desc">Cinematic posters, brand visuals, social media assets.</div>
+          <div class="service-price">Starting from ₹2,000</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">02</div>
+          <div class="service-name">Video &amp; Reels</div>
+          <div class="service-desc">Hook-first reels, short form content, atmospheric edits.</div>
+          <div class="service-price">Starting from ₹3,000</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">03</div>
+          <div class="service-name">Motion Graphics</div>
+          <div class="service-desc">Animated brand assets, title sequences, dynamic overlays.</div>
+          <div class="service-price">Starting from ₹5,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       6. COLLABS
+       ======================================================== -->
+  <section id="collabs">
+    <div class="container">
+      <p class="eyebrow reveal">Collaborations</p>
+      <h2 class="section-title reveal">Who Kleos has worked with.</h2>
+      <!-- ADD: new collaborators here as Kleos grows -->
+      <div class="collab-item reveal">
+        <div class="collab-name">Kakarot</div>
+        <div class="collab-handle">@kakarot._editz</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       7. TESTIMONIALS
+       ======================================================== -->
+  <section id="testimonials">
+    <div class="container">
+      <p class="eyebrow reveal">Words</p>
+      <h2 class="section-title reveal">From those who know.</h2>
+      <!-- UPDATE: replace with Kakarot's actual quote -->
+      <div class="testimonial reveal">
+        <p class="quote">"Working with Kleos felt like watching a vision take shape in real time."</p>
+        <p class="quote-attr">— Kakarot, @kakarot._editz</p>
+      </div>
+      <!-- ADD: more testimonials here as the client list grows -->
+    </div>
+  </section>
+
+  <!-- ========================================================
+       8. JOURNEY TIMELINE  (corrected: May–Jun 2026)
+       ======================================================== -->
+  <section id="journey">
+    <div class="container">
+      <p class="eyebrow reveal">Journey</p>
+      <h2 class="section-title reveal">The road to glory.</h2>
+      <div class="timeline">
+        <div class="timeline-line" id="timeline-line"></div>
+
+        <div class="timeline-entry">
+          <div class="timeline-date">May 2026</div>
+          <div class="timeline-text">Kleos begins. Zero skills, one brand name. First post, a handful of followers.</div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-date">Jun 2026</div>
+          <div class="timeline-text">The breakthrough. BANKAI hits 40K+ views — 40,098 total views and 34,039 accounts reached, 93.5% from people who'd never heard of Kleos.</div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-date">Now · 14 Jun 2026</div>
+          <div class="timeline-text">From zero to 45K+ views in roughly 20 days, off one viral hit and a daily grind. Still building every day — learning Python, video editing, and motion graphics while the work ships.</div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-date">2026 →</div>
+          <!-- UPDATE: fill in after college admission confirmed -->
+          <div class="timeline-text">The next chapter, Hang on you'll get to know in a few weeks!</div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-date">2028 →</div>
+          <div class="timeline-text">Unreal Engine 5, Blender, games. The glory that outlives you.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       9. INSTAGRAM FEED
+       ======================================================== -->
+  <section id="instagram">
+    <div class="container">
+      <p class="eyebrow reveal">Latest</p>
+      <h2 class="section-title reveal">Follow the work.</h2>
+      <!-- Live Instagram feed via Behold.so (pulls latest posts from @kleos.creates) -->
+      <div class="reveal">
+        <behold-widget feed-id="iIIPXEizVcu5dgOLP9ew"></behold-widget>
+        <script>
+          (() => {
+            const d=document,s=d.createElement("script");s.type="module";
+            s.src="https://w.behold.so/widget.js";d.head.append(s);
+          })();
+        </script>
+      </div>
+      <!-- Fallback link, in case the feed is slow to load -->
+      <a href="https://instagram.com/kleos.creates" target="_blank" rel="noopener" class="btn reveal" style="margin-top:2rem;">View on Instagram</a>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       10. CONTACT
+       ======================================================== -->
+  <section id="contact">
+    <div class="container">
+      <p class="eyebrow reveal">Contact</p>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-headline reveal">Ready to build something that outlives the moment?</p>
+          <div class="contact-options reveal">
+            <a href="https://instagram.com/kleos.creates" target="_blank" rel="noopener" class="btn">DM on Instagram</a>
+            <a href="mailto:kleoscreates@gmail.com?subject=Kleos%20enquiry" class="btn">Send an email</a>
+            <!-- UPDATE: add your WhatsApp number (e.g. https://wa.me/91XXXXXXXXXX) -->
+            <a href="#" class="btn" id="whatsapp-link">WhatsApp</a>
+          </div>
+        </div>
+        <div>
+          <!-- The form posts to a backend OR a free service like Formspree.
+               See animations.js + the deployment guide for wiring it up. -->
+          <form class="contact-form" id="contact-form" novalidate>
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+              <div class="field-error" data-for="name">Please enter your name.</div>
+            </div>
+            <div>
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required />
+              <div class="field-error" data-for="subject">Please enter a subject.</div>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+              <div class="field-error" data-for="message">Please enter a message.</div>
+            </div>
+            <button type="submit" class="btn submit-btn clickable" id="submit-btn">
+              <span class="btn-text">Send message</span>
+              <span class="spinner"></span>
+            </button>
+            <p class="form-status" id="form-status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-logo">KLEOS</div>
+      <a href="https://instagram.com/kleos.creates" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+        </svg>
+      </a>
+      <div class="footer-copy">© 2026 Kleos. The glory that outlives you.</div>
+    </div>
+  </footer>
+
+  <!-- back to top button -->
+  <button id="back-to-top" aria-label="Back to top">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <!-- cookie / privacy notice -->
+  <div id="cookie-bar">
+    <div class="container cookie-inner">
+      <span class="cookie-text">Kleos uses analytics to improve your experience.</span>
+      <button class="btn clickable" id="cookie-accept">Accept</button>
+    </div>
+  </div>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="cursor.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>

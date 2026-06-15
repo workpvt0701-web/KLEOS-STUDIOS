@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kleos.gamedev — Moksha</title>
+  <meta name="description" content="Moksha — a long-term open-world game project. Concept art, character, dungeon and boss design by Kleos." />
+  <meta property="og:title" content="Kleos.gamedev — Moksha" />
+  <meta property="og:description" content="Moksha — a long-term open-world game project. Concept art and game design by Kleos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .gd-hero { position: relative; min-height: 92vh; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 120px; padding-bottom: 8vh; overflow: hidden; }
+    .gd-hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .gd-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .gd-hero-bg::after { content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.45) 45%, rgba(13,13,13,0.55) 100%); }
+    .gd-hero .container { position: relative; z-index: 2; }
+    .gd-eyebrow { font-family: var(--font-util); font-size: 0.8rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .gd-title { font-family: var(--font-display); font-size: clamp(3rem, 12vw, 7rem); letter-spacing: 0.08em; line-height: 1; margin-bottom: 2rem; }
+    .gd-intro { font-family: var(--font-title); font-size: clamp(1.3rem, 3vw, 1.9rem); line-height: 1.6; max-width: 34ch; opacity: 0.95; }
+    .gd-section { padding: 80px 0; }
+    .gd-vision p { font-family: var(--font-util); font-size: 1.05rem; line-height: 1.9; max-width: 60ch; opacity: 0.8; margin-bottom: 1.5rem; }
+    .gd-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gold-soft); margin-top: 2rem; }
+    .gd-pillar { background: var(--bg); padding: 2rem; }
+    .gd-pillar h3 { font-family: var(--font-title); font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .gd-pillar p { font-family: var(--font-util); font-size: 0.85rem; line-height: 1.6; opacity: 0.7; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .gallery-item { aspect-ratio: 3/4; background: var(--panel); border: 1px solid var(--gold-soft); position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 1.2rem; transition: all 0.5s var(--ease); }
+    .gallery-item:hover { border-color: var(--gold); transform: translateY(-6px); }
+    .gallery-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .gallery-item .label { position: relative; z-index: 2; font-family: var(--font-util); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); }
+    .gallery-item.placeholder .ghost { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.5rem; color: var(--text); opacity: 0.08; z-index: 1; }
+    @media (max-width: 800px){ .gd-pillars{ grid-template-columns:1fr; } .gallery{ grid-template-columns:1fr 1fr; } }
+    @media (max-width: 500px){ .gallery{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div id="preloader"><div class="preloader-word" id="preloader-word"></div><div class="preloader-line"></div></div>
+  <div id="page-transition"><div class="flash">KLEOS</div></div>
+  <div class="cursor-dot"></div><div class="cursor-ring"></div>
+  <div id="scroll-progress"></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <div class="nav-logo">
+        <a href="index.html">KLEOS</a><span style="opacity:0.5;font-size:0.7rem;letter-spacing:0.15em;">.gamedev</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="creates.html">Creates</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#gallery">Concept Art</a></li>
+        <li><a href="https://instagram.com/kleos.gamedev" target="_blank" rel="noopener">Follow</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="gd-hero">
+    <div class="gd-hero-bg">
+      <img src="assets/images/moksha-1.png" alt="Moksha — the tower of 100 floors" />
+    </div>
+    <div class="container">
+      <p class="gd-intro">The north star of Kleos — and the reason for everything else.</p>
+    </div>
+  </header>
+
+  <section class="gd-section" id="vision">
+    <div class="container gd-vision reveal">
+      <p class="gd-eyebrow">The Concept</p>
+      <h2 style="font-family:var(--font-title);font-size:clamp(2rem,5vw,3.2rem);font-weight:600;margin-bottom:2rem;line-height:1.15;">A tower of a hundred worlds.</h2>
+
+      <p>Moksha is an open-world RPG imagined as a tower of 100 floors. Every floor is a world unto itself — its own atmosphere, its own nature, its own rules. Snow that bites. Forests that breathe. Ruins that remember. You do not travel through Moksha so much as survive it, one floor at a time.</p>
+
+      <p>Each floor is sealed by a dungeon boss, and no two are alike. Different weapons, different movements, different presence — each one designed to be a wall you have to become someone new to climb past. Clear the boss, and the floor opens. The climb is the whole game, and the name says the rest: <em>Moksha</em> — liberation, release. One hundred floors between you and the way out. No guarantees you reach it.</p>
+
+      <p>The dream that drives Moksha is a world that builds itself around you. Rather than a fixed map loaded all at once, the vision is for environments shaped in real time — terrain and atmosphere rendered just ahead of your steps, so the world feels endless without the weight of storing all of it at once. A tower that is always being dreamed into existence a moment before you arrive.</p>
+
+      <p>And the world should feel alive, not scripted. The aim is for characters who respond to you — who protect, who turn on you, who come to care, who grieve — reacting in the moment to how you treat them rather than running down a branch of pre-written lines. People you remember because of what passed between you, not because a quest told you to.</p>
+
+      <p>Beyond that lies the far horizon: shared worlds, where players climb together — and one day, the dream of full immersion, stepping inside Moksha rather than watching it through a screen. That part is years away and beyond what today's technology can do. It's named here honestly, as a north star, not a promise.</p>
+
+      <p style="opacity:0.6;">Moksha is the long game. It begins, like everything Kleos makes, with design — the worlds, the bosses, the creatures drawn one at a time, shared as a series on <a href="https://instagram.com/kleos.gamedev" target="_blank" rel="noopener" style="color:var(--gold);">@kleos.gamedev</a>. Everything else is built toward it.</p>
+
+      <div class="gd-pillars">
+        <div class="gd-pillar"><h3>100 Floors</h3><p>Each floor its own world — atmosphere, terrain, and a dungeon boss to clear.</p></div>
+        <div class="gd-pillar"><h3>Worlds That Build Themselves</h3><p>The dream: environments shaped in real time, rendered just ahead of your steps.</p></div>
+        <div class="gd-pillar"><h3>Characters That Feel</h3><p>NPCs that protect, turn, love, and grieve — reacting to you, not a script.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-section" id="gallery">
+    <div class="container reveal">
+      <p class="gd-eyebrow">The Series</p>
+      <h2 style="font-family:var(--font-title);font-size:clamp(2rem,5vw,3rem);font-weight:600;margin-bottom:0.5rem;">Concept art.</h2>
+      <p style="font-family:var(--font-util);font-size:0.9rem;opacity:0.6;max-width:50ch;">Designs from the road to Moksha. New pieces added as the series grows.</p>
+     <div class="gallery">
+        <a class="gallery-item clickable" href="case-studies/moksha-tower.html"><img src="assets/images/moksha-1.png" loading="lazy" alt="Moksha key art"><span class="label">Moksha · Key Art</span></a>
+        <div class="gallery-item placeholder"><span class="ghost">MOKSHA</span><span class="label">Coming soon</span></div>
+        <div class="gallery-item placeholder"><span class="ghost">MOKSHA</span><span class="label">Coming soon</span></div>
+      </div>
+    </div>
+  </section>
+<section class="gd-section" id="breakdowns">
+    <div class="container reveal">
+      <p class="gd-eyebrow">The Pieces</p>
+      <h2 style="font-family:var(--font-title);font-size:clamp(2rem,5vw,3rem);font-weight:600;margin-bottom:0.5rem;">Behind the art.</h2>
+      <p style="font-family:var(--font-util);font-size:0.9rem;opacity:0.6;max-width:50ch;margin-bottom:3rem;">Each piece of Moksha, and the thinking behind it.</p>
+
+      <!-- ADD: duplicate one .breakdown block below for each new concept art piece -->
+
+      <div class="breakdown" style="border-top:1px solid var(--gold-soft);padding:2.5rem 0;">
+        <p style="font-family:var(--font-util);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;">Key Art · The Tower</p>
+        <h3 style="font-family:var(--font-title);font-size:1.8rem;margin-bottom:1.2rem;">The first glimpse of Moksha.</h3>
+        <p style="font-family:var(--font-util);font-size:1rem;line-height:1.8;max-width:62ch;opacity:0.8;">The opening image of the whole world — a gothic tower clawing up through a sky of fire and storm, chained to the earth it rises from. The red light at its peak is the summit, the way out, the thing every floor is climbed toward. The hundred floors aren't drawn here; they're felt — a structure too vast to take in at once, exactly as the tower should feel to anyone standing at its base. It sets the promise the rest of the series has to live up to: 100 floors, one escape, no guarantees.</p>
+      </div>
+
+    </div>
+  </section>
+  <section class="gd-section" id="feed">
+    <div class="container reveal">
+      <p class="gd-eyebrow">Latest</p>
+      <h2 style="font-family:var(--font-title);font-size:clamp(2rem,5vw,3rem);font-weight:600;margin-bottom:0.5rem;">From the studio.</h2>
+      <p style="font-family:var(--font-util);font-size:0.9rem;opacity:0.6;max-width:50ch;margin-bottom:2rem;">Live from @kleos.gamedev — new Moksha work as it's made.</p>
+      <behold-widget feed-id="qArnDejlndDNXN7aD9pC"></behold-widget>
+      <script>
+        (() => {
+          const d=document,s=d.createElement("script");s.type="module";
+          s.src="https://w.behold.so/widget.js";d.head.append(s);
+        })();
+      </script>
+      <a href="https://instagram.com/kleos.gamedev" target="_blank" rel="noopener" class="btn" style="margin-top:2rem;display:inline-block;">View on Instagram</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-logo">KLEOS</div>
+      <a href="https://instagram.com/kleos.gamedev" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+      </a>
+      <div class="footer-copy">© 2026 Kleos. The glory that outlives you.</div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+  <script src="cursor.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>

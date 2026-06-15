@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kleos — The glory that outlives you.</title>
+  <meta name="description" content="Dark, cinematic creative studio. Design, game development, and code. The glory that outlives you." />
+  <meta property="og:title" content="Kleos — The glory that outlives you." />
+  <meta property="og:description" content="Dark, cinematic creative studio. Design, game development, and code." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://workpvt0701-web.github.io/KLEOS-STUDIOS/" />
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #chooser { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+    .chooser-word { font-family: var(--font-display); font-size: clamp(3rem, 12vw, 7rem); letter-spacing: 0.1em; color: var(--text); margin-bottom: 1rem; }
+    .chooser-tagline { font-family: var(--font-util); font-size: 0.8rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .chooser-line { height: 1px; width: 0; background: var(--gold); margin: 0 auto 4rem; animation: chooserLine 1s var(--ease) 0.8s forwards; }
+    @keyframes chooserLine { to { width: 200px; } }
+    .arms { display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; max-width: 1000px; }
+    .arm { flex: 1; min-width: 240px; max-width: 300px; border: 1px solid var(--gold-soft); padding: 2.5rem 2rem; text-align: left; transition: all 0.5s var(--ease); position: relative; overflow: hidden; }
+    .arm:hover { border-color: var(--gold); transform: translateY(-6px); }
+    .arm-name { font-family: var(--font-title); font-size: 1.8rem; color: var(--text); margin-bottom: 0.3rem; }
+    .arm-handle { font-family: var(--font-util); font-size: 0.7rem; letter-spacing: 0.2em; color: var(--gold); opacity: 0.8; margin-bottom: 1.5rem; }
+    .arm-tagline { font-family: var(--font-util); font-size: 0.85rem; line-height: 1.6; opacity: 0.7; min-height: 3em; }
+    .arm-cta { font-family: var(--font-util); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-top: 2rem; display: inline-block; }
+    .arm.soon { opacity: 0.6; }
+    .arm.soon:hover { transform: none; border-color: var(--gold-soft); }
+    .arm-soon-label { font-family: var(--font-util); font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-top: 2rem; display: inline-block; }
+    @media (max-width: 700px) { .arms { flex-direction: column; align-items: center; } .arm { width: 100%; max-width: 340px; } }
+  </style>
+</head>
+<body>
+  <div id="preloader">
+    <div class="preloader-word" id="preloader-word"></div>
+    <div class="preloader-line"></div>
+  </div>
+  <div id="page-transition"><div class="flash">KLEOS</div></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <section id="chooser">
+    <h1 class="chooser-word">KLEOS</h1>
+    <p class="chooser-tagline">The glory that outlives you</p>
+    <div class="chooser-line"></div>
+
+    <div class="arms">
+      <a class="arm reveal clickable" href="creates.html">
+        <div class="arm-name">Kleos</div>
+        <div class="arm-handle">.creates</div>
+        <div class="arm-tagline">Design · Video · Motion</div>
+        <span class="arm-cta">Enter &rarr;</span>
+      </a>
+      <a class="arm reveal clickable" href="gamedev.html">
+        <div class="arm-name">Kleos</div>
+        <div class="arm-handle">.gamedev</div>
+        <div class="arm-tagline">The Moksha world. Concept art &amp; game design.</div>
+        <span class="arm-cta">Enter &rarr;</span>
+      </a>
+      <a class="arm soon reveal clickable" href="codes.html">
+        <div class="arm-name">Kleos</div>
+        <div class="arm-handle">.codes</div>
+        <div class="arm-tagline">Engineering the worlds behind the art.</div>
+        <span class="arm-soon-label">Coming soon</span>
+      </a>
+    </div>
+  </section>
+
+  <script src="cursor.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>

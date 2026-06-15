@@ -1,0 +1,29 @@
+KLEOS — How to add your hero background videos (TWO videos, crossfading)
+========================================================================
+The hero now slowly crossfades between TWO looping videos.
+
+1. Get TWO of your reels as .mp4 files (original exports are best).
+   - Video 1 (e.g. BANKAI)
+   - Video 2 (the Toji edit)
+2. Keep each short (5-15 sec — they loop) and compress each UNDER 5 MB:
+     https://www.freeconvert.com/video-compressor   (or HandBrake)
+3. Name them EXACTLY:
+     hero.mp4    <- shows first
+     hero2.mp4   <- crossfades in (the Toji one)
+4. Put BOTH in this folder (frontend/assets/).
+5. (Optional) Add a still frame named  hero-poster.jpg  — shown before
+   the videos load. A screenshot of either reel works.
+6. Save, refresh the browser (Ctrl+Shift+R). Done.
+
+TUNING
+- Want each clip to stay longer/shorter before fading? Open animations.js,
+  find setupHeroVideos(), change the 6000 (milliseconds = 6 sec).
+- Want a slower/faster fade? Open style.css, find .hero-vid, change the
+  "transition: opacity 1.5s" value.
+- Video too bright / text hard to read? Open style.css, find #hero-overlay,
+  raise the 0.6 / 0.75 / 0.92 numbers closer to 1 (darker).
+
+NOTES
+- Only ONE video added? It just shows that one (no crossfade) — still fine.
+- NO videos added? The text hero shows on plain black — still works.
+- Videos are muted and loop automatically (browsers require muted to autoplay).
